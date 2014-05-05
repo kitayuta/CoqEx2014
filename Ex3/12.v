@@ -14,11 +14,13 @@ Proof.
   simpl in H.
   exfalso.
   apply (Lt.lt_n_0 0 H).
-  induction a.
+  destruct a.
   simpl in H.
   assert (exists x : nat, 1 < x /\ In x xs).
   apply IHxs.
-  apply (Lt.lt_trans (length xs) (S (length xs)) (sum xs) (Lt.lt_n_Sn (length xs)) H).
+  apply (Lt.lt_trans (length xs) (S (length xs)) (sum xs)).
+  apply Lt.lt_n_Sn.
+  exact H.
   destruct H0.
   exists x.
   destruct H0.
@@ -27,7 +29,7 @@ Proof.
   simpl.
   right.
   assumption.
-  induction a.
+  destruct a.
   simpl in H.
   apply Lt.lt_S_n in H.
   apply IHxs in H.
