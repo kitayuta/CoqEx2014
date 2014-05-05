@@ -9,23 +9,15 @@ Goal forall n m : nat, (n + m) * (n + m) = n * n + m * m + 2 * n * m.
 Proof.
   intros.
   rewrite mult_plus_distr_r.
-  rewrite mult_plus_distr_l.
-  rewrite mult_plus_distr_l.
+  rewrite! mult_plus_distr_l.
   replace (m * n) with (n * m) by apply mult_comm.
-  replace (n * m + m * m) with (m * m + n * m).
+  replace (n * m + m * m) with (m * m + n * m) by apply plus_comm.
   rewrite plus_permute_2_in_4.
-  replace (n * m) with (n * m * 1).
-  rewrite <- mult_plus_distr_l.
-  replace (n * m * (1 + 1)) with (2 * n * m).
-  reflexivity.
-  replace (1 + 1) with 2.
-  rewrite mult_assoc_reverse.
-  rewrite mult_comm.
-  reflexivity.
-  simpl.
+  replace (n * m + n * m) with  (n * m * 1 + n * m).
+  rewrite mult_n_Sm.
+  replace ((n * m) * 2) with (2 * (n * m)) by apply mult_comm.
+  rewrite mult_assoc.
   reflexivity.
   rewrite mult_1_r.
-  reflexivity.
-  rewrite plus_comm.
   reflexivity.
 Qed.

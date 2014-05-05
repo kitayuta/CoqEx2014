@@ -15,7 +15,6 @@ Theorem plus_assoc : forall n m p, n + (m + p) = (n + m) + p.
 Proof.
   intros.
   induction n.
-  simpl.
   reflexivity.
   simpl.
   f_equal.

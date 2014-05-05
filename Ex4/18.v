@@ -18,7 +18,6 @@ Proof.
   induction n.
   simpl.
   induction m.
-  simpl.
   reflexivity.
   simpl.
   f_equal.

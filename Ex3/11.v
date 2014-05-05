@@ -10,7 +10,6 @@ Goal forall n, sum_odd n = n * n.
 Proof.
   intros.
   induction n.
-  simpl.
   reflexivity.
   simpl.
   rewrite IHn.
