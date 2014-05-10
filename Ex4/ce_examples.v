@@ -15,7 +15,6 @@ Proof.
   assumption.
 Qed.
 
-
 Definition False' : Prop := forall P : Prop, P.
 Goal False' <-> False.
 Proof.
